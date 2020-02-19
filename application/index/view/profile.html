@@ -1,0 +1,160 @@
+{include file='/common/head' /}
+<body>
+<div class="animsition">
+    <div class="site-wrapper">
+        <!-- header-area -->
+        {include file='/common/header' /}
+        <div class="overlay"></div>
+        <!-- banner-area -->
+        <section class="banner-section">
+            <div class="section-bg" style="background-image: url('/static/img/parallax.jpg');"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="page-banner-content col">
+                        <h1 class="text-white">个人资料</h1>
+                        <span id="usernm2"></span>
+
+                        <!-- breadctumb -->
+                        <ul class="page-breadcrumb">
+                            <li><a href="/">主页</a></li>
+                            <li>我的个人资料</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- content-area -->
+        <div class="light-section section-block">
+            <div class="container">
+                <div class="section-space"></div>
+                <div class="row">
+<!--                    左边主栏-->
+                    <div class="col-lg-8">
+                        <div class="tabs primary">
+                            <div class="tabs-header">
+                                <ul>
+                                    <li class="active"><a href="#tab-1" data-toggle="tab">基本资料</a></li>
+<!--                                    <li><a href="#tab-2" data-toggle="tab">其他资料</a></li>-->
+<!--                                    <li><a href="#tab-3" data-toggle="tab">Tab 3</a></li>-->
+                                </ul>
+                                <div class="tab-hover"></div>
+                                <nav class="tabs-nav">
+                                    <span class="tab-prev"><i class="icon-material-outline-keyboard-arrow-left"></i></span>
+                                    <span class="tab-next"><i class="icon-material-outline-keyboard-arrow-right"></i></span>
+                                </nav>
+                            </div>
+                            <!-- Tab Content -->
+                            <div class="tabs-content">
+                                <div class="tab-pane fade in active" id="tab-1">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <b>用户名：</b>{$name}
+                                            <br><br>
+                                            <b>真实姓名：</b>{$realname}
+                                            <br><br>
+                                            <b>学号 ：</b>{$schoolid}
+                                            <br><br>
+                                            <b>手机：</b>{$phone}
+                                            <br><br>
+                                            <b>邮箱地址 ：</b>{$email}
+                                            <br>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <b>性别：</b>{$sex}
+                                            <br><br>
+                                            <b>年龄：</b>{$age}
+                                            <br><br>
+                                            <b>最后一次登陆网站 ： </b>{$last_login}
+                                            <br>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12" style="text-align: center">
+                                        <form action="/index/edit">
+                                            <button style="border-radius: 10px;padding: 12px 8px;width: 50%">编辑我的资料</button>
+                                        </form>
+
+<!--                                        <a href="/index/edit"><b>编辑我的资料</b></a>-->
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab-2">
+
+                                </div>
+                                <div class="tab-pane fade" id="tab-3">
+                                    <p>Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.</p>
+                                    <p>Phosfluorescently engage worldwide methodologies with web-enabled technology. Interactively coordinate proactive e-commerce via process-centric "outside the box" thinking. Completely pursue scalable customer service through sustainable potentialities.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--                    右边功能栏-->
+                    <div class="col-lg-4 sidebar-blog">
+
+                        <div class="widget">
+                            <h4 class="widget-title">--社团报名申请--</h4>
+                            <div class="widget-link">
+                                <ul class="sidebar-link">
+                                    {php}if(sizeof($app)==0){
+                                    echo '
+                                    <li><span style="margin-left: 0px;float: left;">你还没有申请加入任何社团哟~~</span></li>
+                                    ';
+                                     }{/php}
+                                    {volist name="app" id="applications"}
+                                    <li>
+                                        <a href="/index/Profile/clubApplications?id={$applications.apply_for}" id="{$applications.apply_for}">{$apply_for[$key][0]}</a>
+                                        <span>{php}echo date('Y-m-d H:i',$applications->apply_date);{/php}</span>
+                                    </li>
+                                    {/volist}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="widget">
+                            {php}
+                            if($admin_club == ''){
+                            echo '<h6 class="widget-title">您还未申请认证成为社团管理员</h6>';
+                            }else{ {/php}
+                            <h6 class="widget-title">您已被认证为以下社团的管理员</h6>
+                            {php} } {/php}
+
+                            <div class="widget-tags">
+                                <ul class="sidebar-tag">
+                                    {php}
+                                    if($admin_club == ''){
+                                    echo '<li><a href="/index/Clubsignup">点击申请认证为社团负责人</a></li>';
+                                    }else{ {/php}
+                                    <li><a href="/admin">{$admin_club}</a></li>
+                                    {php} } {/php}
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="section-space"></div>
+
+            </div>
+        </div>
+        <!-- cta bar -->
+        {include file='/common/ctabar' /}
+        <!-- footer-area -->
+        {include file='/common/footer' /}
+    </div>
+</div>
+<!-- Javascript -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-select.min.js"></script>
+<script src="/static/js/animsition.js"></script>
+<script src="/static/js/jquery.appear.min.js"></script>
+<script src="/static/js/countto.js"></script>
+<script src="/static/js/slick.min.js"></script>
+<script src="/static/js/jquery.stickit.min.js"></script>
+<script src="/static/js/jquery.parallax-1.1.3.js"></script>
+<script src="/static/js/owl.carousel.min.js"></script>
+<script src="/static/js/masonry.pkgd.min.js"></script>
+<script src="/static/js/magnific.popup.min.js"></script>
+<script src="/static/js/wow.min.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="/static/js/common.js"></script>
+</body>
+</html>

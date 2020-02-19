@@ -1,0 +1,244 @@
+{include file='/common/head' /}
+<!--<link rel="stylesheet" type="text/css" href="/static/css/lib/bootstrap.min.css" />-->
+<link rel="stylesheet" type="text/css" href="/static/css/less/style.css"/>
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="/static/admin/css/all.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="/static/admin/css/adminlte.min.css">
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="/static/admin/css/Google-Font-Source-Sans-Pro.css">
+<style>
+    .nava{
+        position: relative;
+        display: block;
+        padding: 10px 15px
+    }
+</style>
+<body style="font-size: 14px;font-family: Open Sans, sans-serif;line-height: 2;">
+<div class="animsition">
+    <div class="site-wrapper">
+        <!-- header-area -->
+        <header id="header" class="main-header" style="margin-left: 0px;">
+            <div class="header-top">
+            </div>
+            <div class="container">
+                <a class="main-logo" href="/index"><img src="/static/img/logo.png" data-sticky-logo="/static/img/logo.png" data-transparent-logo="/static/img/logo.png" alt=""></a>
+                <ul class="header-buttons">
+                    <li class="dropdown">
+                        <a class="user-trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-user-circle" aria-hidden="true"></i></a>
+                        <ul class="dropdown-menu" id="userStatus" style="border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
+                            <li></li>
+                        </ul>
+                    </li>
+                    <li style="margin-top: 22px;font-size: larger"><span id="usernm"></span></li>
+                </ul>
+                <nav class="nav">
+                    <ul id="primary-nav" class="primary-nav is-fixed">
+                        <li><a href="">最近新闻</a></li>
+                        <li><a href="/Index/clubs">社团列表</a></li>
+                        <li><a href="/index/Messages">我的消息</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="overlay"></div>
+        <!-- banner-area -->
+        <section class="banner-section">
+            <div class="section-bg" style="background-image: url('/static/img/parallax.jpg');"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="page-banner-content col">
+                        <h1 class="text-white">{$apply_for}--申请进度</h1>
+                        <!--                        <span>Page Not Found!</span>-->
+
+                        <!-- breadctumb -->
+                        <ul class="page-breadcrumb">
+                            <li><a href="/">主页</a></li>
+                            <li>申请进度</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- content-area -->
+        <section class="white-section section-block" style="background: #f1f3f7">
+            <div class="section-space"></div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3">
+                        <section class="content">
+                            <div class="container-fluid">
+
+                                <!-- Timelime example  -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <!-- The time line -->
+                                        <div class="timeline">
+                                            <!-- timeline time label -->
+                                            <div class="time-label">
+                                                <span class="bg-red">10 Feb. 2014</span>
+                                            </div>
+                                            <!-- /.timeline-label -->
+                                            <!-- timeline item -->
+                                            <div>
+                                                <i class="fas fa-envelope bg-blue"></i>
+                                                <div class="timeline-item">
+                                                    <span class="time"><i class="fas fa-clock"></i> 12:05</span>
+                                                    <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
+
+                                                    <div class="timeline-body">
+                                                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                                                        weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                                                        jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                                                        quora plaxo ideeli hulu weebly balihoo...
+                                                    </div>
+                                                    <div class="timeline-footer">
+                                                        <a class="btn btn-primary btn-sm">Read more</a>
+                                                        <a class="btn btn-danger btn-sm">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END timeline item -->
+                                            <!-- timeline item -->
+                                            <div>
+                                                <i class="fas fa-user bg-green"></i>
+                                                <div class="timeline-item">
+                                                    <span class="time"><i class="fas fa-clock"></i> 5 mins ago</span>
+                                                    <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request</h3>
+                                                </div>
+                                            </div>
+                                            <!-- END timeline item -->
+                                            <!-- timeline item -->
+                                            <div>
+                                                <i class="fas fa-comments bg-yellow"></i>
+                                                <div class="timeline-item">
+                                                    <span class="time"><i class="fas fa-clock"></i> 27 mins ago</span>
+                                                    <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
+                                                    <div class="timeline-body">
+                                                        Take me to your leader!
+                                                        Switzerland is small and neutral!
+                                                        We are more like Germany, ambitious and misunderstood!
+                                                    </div>
+                                                    <div class="timeline-footer">
+                                                        <a class="btn btn-warning btn-sm">View comment</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- END timeline item -->
+                                            <div>
+
+                                            </div>
+                                            <!-- timeline item -->
+                                            <div>
+                                                <i class="fas fa-clock bg-gray"></i>
+                                                <div class="timeline-item">
+                                                    <span class="time"><i class="fas fa-clock"></i> 5 mins ago</span>
+                                                    <h3 class="timeline-header">取消申请</h3>
+                                                    <form class="cancelForm">
+                                                        <input type="text" name="id" hidden value="{$app.apply_for}">
+                                                        <button style="border-radius: 3px;padding: 5px 5px;width: 12%;margin: 10px;" id="cancelBtn">取消申请</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <!-- END timeline item -->
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                            </div>
+                            <!-- /.timeline -->
+
+                        </section>
+<!--                            <div class="container">-->
+<!--                                <ul class="step step-progress" data-step="4" style="width: 100%;list-style: none;display: inline-block;">-->
+<!--                                    <li style="width: 20%;float: left;text-align:center;">-->
+<!--                                        <a class="nava">成功提交申请<span class="caret"></span></a>-->
+<!--                                        <b>{php}echo date('Y-m-d H:i',$app->status1_time);{/php}</b>-->
+<!--                                    </li>-->
+<!--                                    <li style="width: 20%;float: left;text-align:center;">-->
+<!--                                        <a class="nava">管理员收到申请<span class="caret"></span></a>-->
+<!--                                        <b>{$app.status2_time}</b>-->
+<!--                                    </li>-->
+<!--                                    <li style="width: 20%;float: left;text-align:center;">-->
+<!--                                        <a class="nava">正在审核<span class="caret"></span></a>-->
+<!--                                        <b>{$app.status3_time}</b>-->
+<!--                                    </li>-->
+<!--                                    <li style="width: 20%;float: left;text-align:center;">-->
+<!--                                        <a class="nava">请前往面试<span class="caret"></span></a>-->
+<!--                                        <b>{$app.status4_time}</b>-->
+<!--                                    </li>-->
+<!--                                    <li style="width: 20%;float: left;text-align:center;">-->
+<!--                                        <a class="nava">审核通过<span class="caret"></span></a>-->
+<!--                                        <b>{$app.status5_time}</b>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="section-space"></div>
+            <div class="col-lg-6 offset-lg-3">
+
+            </div>
+            <div class="section-space"></div>
+        </section>
+        <!-- cta bar -->
+        {include file='/common/ctabar' /}
+        <!-- footer-area -->
+        {include file='/common/footer' /}
+    </div>
+</div>
+<!-- Javascript -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-select.min.js"></script>
+<script src="/static/js/animsition.js"></script>
+<script src="/static/js/jquery.appear.min.js"></script>
+<script src="/static/js/countto.js"></script>
+<script src="/static/js/slick.min.js"></script>
+<script src="/static/js/jquery.stickit.min.js"></script>
+<script src="/static/js/jquery.parallax-1.1.3.js"></script>
+<script src="/static/js/owl.carousel.min.js"></script>
+<script src="/static/js/masonry.pkgd.min.js"></script>
+<script src="/static/js/magnific.popup.min.js"></script>
+<script src="/static/js/wow.min.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="/static/js/common.js"></script>
+<script type="text/javascript" src="/static/js/lib/lib.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/static/admin/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/static/admin/js/demo.js"></script>
+<script>
+    $(function() {
+        let step = '{$app.status}';
+        bsStep(step);
+        //bsStep(i) i 为number 可定位到第几步 如bsStep(2)/bsStep(3)
+    })
+
+    $(function () {
+        $("#cancelBtn").on('click', function () {
+            if (confirm('确定要取消该社团的申请?')){
+                $.ajax({
+                    type:'POST',
+                    url:"{:url('/index/Profile/cancelApplication')}",
+                    data: $(".cancelForm").serialize(),
+                    dataType: "JSON",
+                    success: function(data){
+                        if(data.status == 1){
+                            alert(data.message);
+                            window.location.href = "{:url('/index/Profile')}";
+                        }else{
+                            alert(data.message);
+                            window.location.href = "{:url('/index/Profile')}";
+                        }
+                    }
+                })
+            }
+        })
+    })
+</script>
+</body>
+</html>

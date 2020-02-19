@@ -1,0 +1,129 @@
+{include file='/common/head' /}
+<body>
+<div class="animsition">
+    <div class="site-wrapper">
+        <!-- header-area -->
+        {include file='/common/header' /}
+        <div class="overlay"></div>
+        <!-- banner-area -->
+        <section class="banner-section">
+            <div class="section-bg" style="background-image: url('/static/img/parallax.jpg');"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="page-banner-content col">
+                        <h1 class="text-white">社团负责人认证</h1>
+<!--                        <span>Get in Touch With Us</span>-->
+
+                        <!-- breadctumb -->
+                        <ul class="page-breadcrumb">
+                            <li><a href="Index/index.html">主页</a></li>
+                            <li>社团负责人认证</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- content-area -->
+
+        <div class="white-section section-block">
+            <div class="container-fluid">
+                <div class="contact-map wow fadeIn">
+                    <!---<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d788.1685311824108!2d-122.42355686092779!3d37.79767612754957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808580e839d7e541%3A0xf89b6220c55337a7!2sGreen+St%2C+San+Francisco%2C+CA%2C+USA!5e0!3m2!1sen!2sro!4v1534933659099" width="600" height="450" style="border:0" allowfullscreen></iframe>-->
+                </div>
+            </div>
+        </div>
+        <section id="contact" class="light-section">
+            <div class="container">
+                <div class="section-space"></div>
+                <div class="row">
+                    <div class="col-xl-8 col-lg-8 offset-xl-2 offset-lg-2">
+                        <div class="content-area">
+                            <h2>社团负责人认证</h2>
+                            <p class="subtitle">提交该认证表单后请等待站点管理员审核，一旦审核通过即可获得后台权限，并能在后台完善社团信息!</p>
+                            <form method="post" class="clubSignUpForm" autocomplete="on">
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input class="with-border" name="clubname" type="text" id="clubname" placeholder="社团名称" required="required" />
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <input class="with-border" name="phone" type="text" id="phone" placeholder="联系方式(手机号码)"  required="required" />
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <input class="with-border" name="realname" type="text" id="realname" placeholder="你的真实姓名"  required="required" />
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <input class="with-border" name="password" type="password" id="password" placeholder="账号密码"  required="required" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p style="margin-left: 20px;">留言请写在以下输入框</p>
+                                </div>        
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <textarea class="with-border" name="comments" cols="40" rows="5" id="comments" placeholder="留言" spellcheck="true" required="required"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input type="submit" class="submit button margin-top-15" id="clubSignUpFormBtn" value="提交申请" />
+                                    </div>
+                                </div>                            
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-space"></div>
+            </div>
+        </section>
+
+        <!-- cta bar -->
+        {include file='/common/ctabar' /}
+        <!-- footer-area -->
+        {include file='/common/footer' /}
+    </div>
+</div>
+<!-- Javascript -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-select.min.js"></script>
+<script src="/static/js/animsition.js"></script>
+<script src="/static/js/jquery.appear.min.js"></script>
+<script src="/static/js/countto.js"></script>
+<script src="/static/js/slick.min.js"></script>
+<script src="/static/js/jquery.stickit.min.js"></script>
+<script src="/static/js/jquery.parallax-1.1.3.js"></script>
+<script src="/static/js/owl.carousel.min.js"></script>
+<script src="/static/js/masonry.pkgd.min.js"></script>
+<script src="/static/js/magnific.popup.min.js"></script>
+<script src="/static/js/wow.min.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="/static/js/common.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#clubSignUpFormBtn").on('click', function () {
+            alert('请等待系统验证(请点击确定)...');
+            $.ajax({
+                type:'POST',
+                url:"{:url('/index/Clubsignup/clubSignUp')}",
+                data: $(".clubSignUpForm").serialize(),
+                dataType: "JSON",
+                success: function(data){
+                    if(data.status == 1){
+                        alert(data.message);
+                        location.reload();
+                    }else{
+                        alert(data.message);
+                        location.reload();
+                    }
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

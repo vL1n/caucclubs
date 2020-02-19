@@ -1,0 +1,111 @@
+{include file='/common/head' /}
+<body>
+<div class="animsition">
+    <div class="site-wrapper">
+        <!-- header-area -->
+        {include file='/common/header' /}
+        <div class="overlay"></div>
+        <!-- banner-area -->
+        <section class="banner-section">
+            <div class="section-bg" style="background-image: url('/static/img/parallax.jpg');"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="page-banner-content col">
+                        <h1 class="text-white">登录</h1>
+
+                        <!-- breadctumb -->
+                        <ul class="page-breadcrumb">
+                            <li><a href="Index/index.html">主页</a></li>
+                            <li>登录</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- content-area -->
+        <section class="white-section section-block">
+            <div class="container">
+                <div class="section-space"></div>
+                <div class="row">
+                    <div class="col-xl-5 offset-xl-3">
+
+                        <div class="login-register-area">
+
+                            <div class="text-center margin-bottom-20">
+                                <h3 class="font-weight-600 no-margin">登录你的账号</h3>
+                                <span>还没有账号? <a href="/index/register">去注册</a></span>
+                            </div>
+                                
+                            <!-- Form -->
+                            <form method="post" class="loginform">
+
+                                <input type="text" class="input-text with-border" name="username" id="username" placeholder="用户名" required/>
+
+                                <input type="password" class="input-text with-border" name="password" id="password" placeholder="密码" required/>
+                                
+                                <a href="#" class="forgot-password">忘记密码?</a>
+
+                            </form>
+                            
+                            <!-- Button -->
+                            <button class="button dark full-width button-sliding-icon margin-top-10" type="submit" id="loginbtn">登录 <i class="fa fa-angle-right"></i></button>
+                            
+<!--                            &lt;!&ndash; Social Login &ndash;&gt;-->
+<!--                            <div class="login-separator text-center"><span>or</span></div>-->
+<!--                            <div class="login-buttons">-->
+<!--                                <button class="facebook-login"><i class="fa fa-facebook"></i> Log In via Facebook</button>-->
+<!--                                <button class="google-login"><i class="fa fa-google-plus"></i> Log In via Google+</button>-->
+<!--                            </div>-->
+                        </div>
+
+                    </div>
+                </div>       
+                <div class="section-space"></div>
+            </div>
+        </section>
+        <!-- cta bar -->
+        {include file='/common/ctabar' /}
+        <!-- footer-area -->
+        {include file='/common/footer' /}
+    </div>
+</div>
+<!-- Javascript -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-select.min.js"></script>
+<script src="/static/js/animsition.js"></script>
+<script src="/static/js/jquery.appear.min.js"></script>
+<script src="/static/js/countto.js"></script>
+<script src="/static/js/slick.min.js"></script>
+<script src="/static/js/jquery.stickit.min.js"></script>
+<script src="/static/js/jquery.parallax-1.1.3.js"></script>
+<script src="/static/js/owl.carousel.min.js"></script>
+<script src="/static/js/masonry.pkgd.min.js"></script>
+<script src="/static/js/magnific.popup.min.js"></script>
+<script src="/static/js/wow.min.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="/static/js/common.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#loginbtn").on('click', function () {
+            // alert('请等待系统验证(请点击确定)...');
+            $.ajax({
+                type:'POST',
+                url:"{:url('/index/Login/check')}",
+                data: $(".loginform").serialize(),
+                dataType: "JSON",
+                success: function(data){
+                    if(data.status == 1){
+                        alert(data.message);
+                        window.location.href = "{:url('/')}";
+                    }else{
+                        alert(data.message);
+                        window.location.href = "{:url('/index/login')}";
+                    }
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

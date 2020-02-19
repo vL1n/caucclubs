@@ -1,0 +1,100 @@
+{include file='/common/head' /}
+<style>
+
+    /*分页*/
+
+    .pagination {}
+
+    .pagination li {display: inline-block;margin-right: 20px;padding: 7px;border: 1px solid #e2e2e2;min-width: 50px;text-align: center;border-radius: 7px;}
+
+    .pagination li.active {background: #226d95;color: #fff;border: 5px solid #226d95;}
+
+    .pagination li a {display: block;text-align: center;}
+
+</style>
+<body>
+<div class="animsition">
+    <div class="site-wrapper">
+        <!-- header-area -->
+        {include file='/common/header' /}
+        <div class="overlay"></div>
+        <!-- banner-area -->
+        <section class="banner-section">
+            <div class="section-bg" style="background-image: url('/static/img/parallax.jpg');"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="page-banner-content col">
+                        <h1 class="text-white">我收到的信息</h1>
+<!--                        <span>Page Not Found!</span>-->
+
+                        <!-- breadctumb -->
+                        <ul class="page-breadcrumb">
+                            <li><a href="/">主页</a></li>
+                            <li>我收到的信息</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- content-area -->
+        <section class="white-section section-block" style="background: #f1f3f7">
+            <div class="section-space"></div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3">
+                        <div class="widget" style="border-radius: 10px;">
+                            <h4 class="widget-title">我收到的信息</h4>
+                            <div class="sidebar-recent-post" style="margin-left: -75px;">
+                                <ul>
+                                    {volist name="message" id="m"}
+                                        <li>
+                                            <a href="/index/Messages/messages?id={$m.id}">
+                                            <div class="recent-post-content">
+                                                <h3>
+                                                    <strong>{$m.title}</strong>
+                                                </h3>
+                                                <div class="widget-date" style="margin-top: -20px;">{php}$time = $m->made_time; echo date('Y-m-d h:i',$time){/php}</div>
+                                            </div>
+                                            </a>
+                                        </li>
+                                    {/volist}
+                                </ul>
+                            </div>
+                        </div>
+                        <br>
+                    <div class="col-lg-12" style="text-align: center">
+                        {$message|raw}
+                    </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class="section-space"></div>
+        </section>
+        <!-- cta bar -->
+        {include file='/common/ctabar' /}
+        <!-- footer-area -->
+        {include file='/common/footer' /}
+    </div>
+</div>
+<!-- Javascript -->
+<script src="/static/js/jquery.min.js"></script>
+<!--<script src="/static/js/jquery-3.3.1.js"></script>-->
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-select.min.js"></script>
+<script src="/static/js/animsition.js"></script>
+<script src="/static/js/jquery.appear.min.js"></script>
+<script src="/static/js/countto.js"></script>
+<script src="/static/js/slick.min.js"></script>
+<script src="/static/js/jquery.stickit.min.js"></script>
+<script src="/static/js/jquery.parallax-1.1.3.js"></script>
+<script src="/static/js/owl.carousel.min.js"></script>
+<script src="/static/js/masonry.pkgd.min.js"></script>
+<script src="/static/js/magnific.popup.min.js"></script>
+<script src="/static/js/wow.min.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="/static/js/common.js"></script>
+</body>
+</html>

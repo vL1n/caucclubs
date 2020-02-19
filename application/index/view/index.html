@@ -1,0 +1,297 @@
+{include file='/common/head' /}
+<body>
+<div class="animsition">
+    <div class="site-wrapper header-top-with">
+        <!-- header-area -->
+        {include file='/common/header' /}
+        <div class="overlay"></div>
+        <!-- slider-area -->
+        <section class="slider-area">
+            <div class="slider-active">
+                <div class="single-slider slider-bg d-flex align-items-center" style="background-image:url(/static/img/slider/slider1.jpg)">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="slider-content">
+                                    <h2 class="letter-spacing-n05px" data-animation="fadeInDown" data-delay=".2s"> <br><span>易航招新网</span></h2>
+                                    <p data-animation="fadeInLeft" data-delay=".4s"></p>
+                                    <a href="/Index/clubs" class="button gray ripple-effect button-sliding-icon"  data-animation="fadeInUp" data-delay=".6s">点击浏览所有社团 <i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-slider slider-bg d-flex align-items-center" style="background-image:url(/static/img/slider/slider2.jpg)">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="slider-content">
+                                    <h2 class="letter-spacing-n05px" data-animation="fadeInUp" data-delay=".2s"><span>易航招新网</span></h2>
+                                    <p data-animation="fadeInLeft" data-delay=".4s"></p>
+                                    <a href="/Index/clubs" class="button gray ripple-effect button-sliding-icon" data-animation="fadeInUp" data-delay=".6s">点击浏览所有社团 <i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="single-slider slider-bg d-flex align-items-center" style="background-image:url(/static/img/slider/slider3.jpg)">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-6 offset-xl-6">
+                                <div class="slider-content">
+                                    <h2 class="letter-spacing-n05px" data-animation="fadeInUp" data-delay=".2s"><span>易航招新网</span></h2>
+                                    <p data-animation="fadeInLeft" data-delay=".4s"></p>
+                                    <a href="/Index/clubs" class="button gray ripple-effect button-sliding-icon" data-animation="fadeInUp" data-delay=".6s">点击浏览所有社团 <i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- counter-area -->
+        <section class="counters white-section section-block">
+
+            <div class="big-space"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 section-title-wrapper text-center">
+                        <h3 class="section-title">数据统计</h3>
+                        <p>Lorem Ipsum has been the industry’s standard dummy text.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="number col-md-4 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".3s">
+                        <div class="numbers">
+                            <div class="num-icon">
+                                <i class="fa fa-handshake-o"></i>
+                            </div>
+                            <div class="num-content">
+                                <h4 class="num-heading"><span class="accent" data-speed="3000" data-to="{$count_application}" data-inviewport="yes">{$count_application}</span></h4>
+                                <h5><strong>已提交申请数量</strong></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="number col-md-4 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".6s">
+                        <div class="numbers">
+                            <div class="num-icon">
+                                <i class="fa fa-group"></i>
+                            </div>
+                            <div class="num-content">
+                                <h4 class="num-heading"><span class="accent" data-speed="3000" data-to="{$count_user}" data-inviewport="yes">{$count_user}</span></h4>
+                                <h5><strong>已注册用户数量</strong></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="number col-md-4 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration=".5s" data-wow-delay=".9s">
+                        <div class="numbers">
+                            <div class="num-icon">
+                                <i class="fa fa-home"></i>
+                            </div>
+                            <div class="num-content">
+                                <h4 class="num-heading"><span class="accent" data-speed="3000" data-to="{$count_club}" data-inviewport="yes">{$count_club}</span></h4>
+                                <h5><strong>已注册社团数量</strong></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="big-space"></div>
+
+        </section>
+        <!-- clubs-area -->
+        <section class="light-section section-block">
+
+          <div class="section-space"></div>
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-12 section-title-wrapper">
+                      <h3 class="section-title">社团概览</h3>
+                      <p><a href="/index/Clubs">点击浏览</a>所有社团列表及详情.</p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="car-carousel" data-auto="false" data-loop="true" data-nav="true" data-column="4" data-column2="3" data-column3="1" data-gap="30">
+
+            <div class="owl-carousel owl-theme container">
+
+                {volist name="clubs" id="club"}
+              <div class="item-carousel clearfix">
+                <div class="car">
+                  <a href="/index/Clubs/renderClubDetails?id={$club.id}"><img src="/static/img/{$club.image}" alt="{$club.name}"></a>
+                  <div class="car-description">
+
+                    <h5 class="car-name"><a href="/index/Clubs/renderClubDetails?id={$club.id}">{$club.name}</a></h5>
+
+                    <div class="car-area">
+
+                      <div class="car-price">
+                        $24,659
+                      </div>
+
+                      <div class="tech">
+                          <span style="margin-left: -90px;"><b>QQ群:</b> {$club.QQ_group}</span>
+<!--                        <span><i class="fa fa-dashboard" title="0 - 100 km / h acceleration"></i> <small>4,6 s</small> </span>-->
+<!--                        <span><i class="fa fa-battery-3" title="Fuel consumption"></i> <small>8,3 lt</small> </span>-->
+                      </div>
+
+                    </div>
+
+                  </div>                 
+                </div>                
+              </div>
+                {/volist}
+             
+            </div>
+
+          </div>
+          <div class="section-space"></div>
+
+        </section>
+        <!-- news-area -->
+        <section class="white-section section-block">
+
+            <div class="section-space"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 section-title-wrapper">
+                        <h3 class="section-title">Latest News & Tips</h3>
+                        <p>Discover all the features of our vehicles.</p>
+                    </div>
+                </div>
+            </div> 
+
+            <div class="container">   
+                    <div class="row">
+                        <div class="col-md-6 col-xs-12">
+                            <article class="post-entry">
+                                <div class="post-image">
+                                    <a href="#">
+                                        <img width="600" height="430" src="/static/img/post/post1.jpg" alt="">
+                                        <span class="filter-grayscale"></span>
+                                    </a>
+                                </div>
+                                <div class="post-content">
+                                    <h4 class="post-title"><a href="#">Test Driving Days from AutoShow</a></h4>
+                                    <ul class="post-tags">
+                                        <li>12 June 2018</li>
+                                        <li><a href="#">Admin</a></li>
+                                    </ul>
+                                    <div class="description">
+                                        <p>
+                                        Podcasting operational change management inside of workflows to establish a framework....
+                                        </p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <article class="post-entry">
+                                <div class="post-image">
+                                    <a href="#">
+                                        <img width="600" height="430" src="/static/img/post/post2.jpg" alt="">
+                                        <span class="filter-grayscale"></span>
+                                    </a>
+                                </div>
+                                <div class="post-content">
+                                    <h4 class="post-title"><a href="#">Quality and the New Perspective</a></h4>
+                                    <ul class="post-tags">
+                                        <li>14 June 2018</li>
+                                        <li><a href="#">Admin</a></li>
+                                    </ul>
+                                    <div class="description">
+                                        <p>
+                                        Podcasting operational change management inside of workflows to establish a framework....
+                                        </p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-xs-12">
+                            <article class="post-entry margin-bottom-0">
+                                <div class="post-image">
+                                    <a href="#">
+                                        <img width="600" height="430" src="/static/img/post/post3.jpg" alt="">
+                                        <span class="filter-grayscale"></span>
+                                    </a>
+                                </div>
+                                <div class="post-content">
+                                    <h5 class="post-title"><a href="#">Cut Emissions, Save Costs and Win Business</a></h5>
+                                    <ul class="post-tags">
+                                        <li>16 June 2018</li>
+                                        <li><a href="#">Admin</a></li>
+                                    </ul>                                    
+                                </div>
+                            </article>
+                        </div>  
+                        <div class="col-md-4 col-xs-12">
+                            <article class="post-entry margin-bottom-0">
+                                <div class="post-image">
+                                    <a href="#">
+                                        <img width="600" height="430" src="/static/img/post/post4.jpg" alt="">
+                                        <span class="filter-grayscale"></span>
+                                    </a>
+                                </div>
+                                <div class="post-content">
+                                    <h5 class="post-title"><a href="#">Cut Emissions, Save Costs and Win Business</a></h5>
+                                    <ul class="post-tags">
+                                        <li>12 June 2018</li>
+                                        <li><a href="#">Admin</a></li>
+                                    </ul>                                    
+                                </div>
+                            </article>
+                        </div>  
+                        <div class="col-md-4 col-xs-12">
+                            <article class="post-entry margin-bottom-0">
+                                <div class="post-image">
+                                    <a href="#">
+                                        <img width="600" height="430" src="/static/img/post/post5.jpg" alt="">
+                                        <span class="filter-grayscale"></span>
+                                    </a>
+                                </div>
+                                <div class="post-content">
+                                    <h5 class="post-title"><a href="#">Cut Emissions, Save Costs and Win Business</a></h5>
+                                    <ul class="post-tags">
+                                        <li>12 June 2018</li>
+                                        <li><a href="#">Admin</a></li>
+                                    </ul>                                    
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+            </div>
+
+        </section>
+        <div class="section-space" style="background: white"></div>
+
+
+        <!-- cta bar -->
+        {include file='/common/ctabar' /}
+        <!-- footer-area -->
+        {include file='/common/footer' /}
+    </div>
+</div>
+<!-- Javascript -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-select.min.js"></script>
+<script src="/static/js/animsition.js"></script>
+<script src="/static/js/jquery.appear.min.js"></script>
+<script src="/static/js/countto.js"></script>
+<script src="/static/js/slick.min.js"></script>
+<script src="/static/js/jquery.stickit.min.js"></script>
+<script src="/static/js/jquery.parallax-1.1.3.js"></script>
+<script src="/static/js/owl.carousel.min.js"></script>
+<script src="/static/js/masonry.pkgd.min.js"></script>
+<script src="/static/js/magnific.popup.min.js"></script>
+<script src="/static/js/wow.min.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="/static/js/common.js"></script>
+</body>
+</html>
