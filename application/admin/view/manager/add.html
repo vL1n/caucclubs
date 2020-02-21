@@ -25,11 +25,12 @@
                                     <input type="radio" name="mode" lay-filter="mode" value="0" title="新建管理员用户">
                                 </div>
                             </div>
+
                             <div class="layui-col-lg6" id="mode1">
                                 <div class="layui-inline">
                                     <label class="layui-form-label" style="width: auto">选择一个用户</label>
                                     <div class="layui-input-inline">
-                                        <select name="modules" lay-verify="required" lay-search="">
+                                        <select name="exist_user" lay-search="" id="select1">
                                             <option value="">直接选择或搜索选择</option>
                                             {foreach name="users" item="usr"}
                                             <option value="{$usr['id']}">{$usr['schoolid']}--{$usr['username']}</option>
@@ -38,15 +39,16 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="layui-col-lg6" id="mode2" style="display: none">
                                 <label class="layui-form-label">管理名称：</label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="admin_name" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                                    <input type="text" name="admin_name" placeholder="" autocomplete="off" class="layui-input" id="input1">
                                 </div>
                                 <br style="margin-top: 5px;">
                                 <label class="layui-form-label">管理密码：</label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="admin_password" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                                    <input type="text" name="admin_password" placeholder="" autocomplete="off" class="layui-input" id="input2">
                                 </div>
                             </div>
                             <div class="layui-col-lg6">
@@ -98,16 +100,24 @@
 
         //选择添加方式
         form.on('radio(mode)', function(data){
-
             var div1 = document.getElementById('mode1');
             var div2 = document.getElementById('mode2');
+            var select1 = document.getElementById('select1');
+            var input1 = document.getElementById('input1');
+            var input2 = document.getElementById('input2');
             if(data.value == 1){
                 div1.style.display = "block";
                 div2.style.display = "none";
+                input1.removeAttribute("lay-verify");
+                input2.removeAttribute("lay-verify");
+                select1.setAttribute("lay-verify","required");
             }
             if(data.value == 0){
                 div1.style.display = "none";
                 div2.style.display = "block";
+                select1.removeAttribute("lay-verify");
+                input1.setAttribute("lay-verify","required");
+                input2.setAttribute("lay-verify","required");
             }
         });
 

@@ -49,15 +49,37 @@ class Manager extends Base
 
             $param = input('post.');
 
+            //验证输入的内容是否有误
             $validate = new AdminValidate();
             if(!$validate->check($param)) {
                 return ['code' => -1, 'data' => '', 'msg' => $validate->getError()];
             }
 
-            $param['admin_password'] = makePassword($param['admin_password']);
+            //判断是从现有用户中选择还是新建管理员用户
+            if($param['exist_user'] != ''){ //从现有用户中选择
+                $exist_user_id = $param['exist_user'];
 
+                //从user表中获取该用户的信息
+                $exist_user_info = User::where('id',$exist_user_id)->select();
+                $param['admin_name'] = $exist_user_info[0]['username'];
+                $param['admin_password'] = $exist_user_info[0]['password'];
+
+            }
+            elseif((!is_null($param['admin_name']))&&(!is_null($param['admin_password']))){ //新建管理员用户
+                //处理密码
+                $param['admin_password'] = makePassword($param['admin_password']);
+            }
+
+//            准备输入数据库
             $admin = new admin();
-            $res = $admin->addAdmin($param);
+            $insertInfo = [
+                'admin_name'=>$param['admin_name'],
+                'admin_password'=>$param['admin_password'],
+                'role_id'=>$param['role_id'],
+                'status'=>$param['status'],
+                'add_time'=>date('Y-m-d H:i',time())
+            ];
+            $res = $admin->addAdmin($insertInfo);
 
             Log::write("添加管理员：" . $param['admin_name']);
 

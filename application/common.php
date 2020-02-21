@@ -19,7 +19,7 @@ use tool\Auth;
  */
 function makePassword($password) {
 
-    return md5($password . config('whisper.salt'));
+    return md5($password);
 }
 
 /**
