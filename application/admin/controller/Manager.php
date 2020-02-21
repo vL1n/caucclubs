@@ -10,6 +10,7 @@ namespace app\admin\controller;
 
 use app\admin\model\Admin;
 use app\admin\validate\AdminValidate;
+use app\index\model\User;
 use tool\Log;
 
 class Manager extends Base
@@ -63,8 +64,11 @@ class Manager extends Base
             return json($res);
         }
 
+        $user = User::where('id','<>','0')->select();
+
         $this->assign([
-            'roles' => (new \app\admin\model\Role())->getAllRoles()['data']
+            'roles' => (new \app\admin\model\Role())->getAllRoles()['data'],
+            'users' => $user
         ]);
 
         return $this->fetch('add');
