@@ -16,6 +16,9 @@ use tool\Log;
 class Manager extends Base
 {
     // 管理员列表
+    /**
+     * @return mixed|\think\response\Json
+     */
     public function index()
     {
         if(request()->isAjax()) {
@@ -43,6 +46,13 @@ class Manager extends Base
     }
 
     // 添加管理员
+
+    /**
+     * @return array|mixed|\think\response\Json
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
     public function addAdmin()
     {
         if(request()->isPost()) {

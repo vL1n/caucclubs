@@ -55,7 +55,7 @@ class Login extends Controller
 
             $log->writeLoginLog($param['username'], 1);
 
-            return reMsg(0, url('index/index'), '登录成功');
+            return reMsg(0, url('/admin'), '登录成功');
         }
     }
 
