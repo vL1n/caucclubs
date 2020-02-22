@@ -1,0 +1,115 @@
+
+/*  Primary Color #005a2b
+---------------------------------------------------------------------- */
+a, 
+.page-banner-content .page-breadcrumb li a:hover, 
+.slider-content .price-area .per-time, 
+.slider-content .price-area h3,
+.comments-area .comment-box .post-info li a, 
+.content-area span, 
+.header-top .top-right p i,
+.car-area .car-price,
+.numbers .num-icon, 
+.testimonial:before, 
+.post-entry .post-tags li,
+.primary-nav .nav-gallery .nav-item p { color: #005a2b; }
+
+.text-accent-color { color: #005a2b !important; }
+
+blockquote:before,button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover,
+button:focus,
+input[type="button"]:focus,
+input[type="reset"]:focus,
+input[type="submit"]:focus,span.button,
+button.button,
+input[type="button"],
+input[type="submit"],
+button.button.dark, input[type="button"].dark, input[type="submit"].dark, a.button.dark,
+a.button, table.table th,.tabs-header .active a,
+.tabs.primary .tabs-header .active a, 
+.owl-theme .owl-nav [class*="owl-"]:not(.disabled):hover,
+.owl-theme .owl-nav [class*="owl-"]:not(.disabled):focus,
+.page-title-wrapper .page-title-inner .page-title-content h2:before,
+.sidebar-form form button:hover,
+.pagination ul > li > a:hover, 
+.pagination ul > li > a:focus, 
+.pagination ul > .active > a, 
+.pagination ul > .active > span, 
+.dealerfinder button:hover, 
+.widget-title::before,
+.primary-section,
+.site-footer.dark .dealerfinder button { background-color: #005a2b; }
+
+.site-footer.dark .copyright {
+    background: #3c4044;
+    color: #a6abb0;
+}
+
+.site-footer.dark .dealerfinder p, .site-footer.dark .checkbox label, .site-footer.dark .footer-area .widget a {
+    color: #bec2c5;
+}
+
+.site-footer.dark .checkbox label span.checkbox-icon { border-color: #bec2c5; }
+
+table.table th, .pagination ul > li > a:hover, 
+.pagination ul > li > a:focus, 
+.pagination ul > .active > a, 
+.pagination ul > .active > span {
+  border-color: #005a2b;
+}
+
+@media only screen and (min-width: 1200px) {
+	.primary-nav > .has-children > a::before, .primary-nav > .has-children > a::after { background:#005a2b }
+	.primary-nav .secondary-nav > .see-all a:hover, .primary-nav .nav-gallery > .see-all a:hover {
+    	background: #005a2b;
+    	border-color: #005a2b;
+	}
+	.primary-nav > li > a.selected {
+    	color: #005a2b;
+    	box-shadow: inset 0 -3px 0 #005a2b;
+	}
+	.primary-nav .secondary-nav a:hover, .primary-nav .dropdown-nav a:hover {
+		color: #005a2b;
+	}
+}
+
+/*  Secondary Color #4a4f54
+---------------------------------------------------------------------- */
+ .header-top, .cta-bar ul li a, .testimonial-author span {
+    background-color: #4a4f54;
+}
+body, button, input, select, textarea, h1, h2, h3, h4, h5, h6, .social a, .slider-content h1 span, .primary-nav .see-all a, .user-trigger, a.user-trigger:not([href]):not([tabindex]) {
+    color: #4a4f54;
+}
+.site-footer.dark .footer-area {
+    background: #4a4f54;
+    border-top-color: #4a4f54;
+}
+.testimonial-author span:after {
+    border-bottom-color: #4a4f54;
+}
+.search-trigger::before {
+    border: 2px solid #4a4f54;
+}
+.search-trigger::after {
+    background: #4a4f54;
+}
+.checkbox input:checked + label span.checkbox-icon { border-color: #4a4f54; background-color: #4a4f54; }
+.checkbox label span.checkbox-icon {
+    border: 2px solid #4a4f54;
+}
+@media only screen and (min-width: 1200px) {
+	.primary-nav > li > a, .primary-nav > .has-children > a, .primary-nav > .has-children > a:not([href]):not([tabindex]),
+	.primary-nav .nav-gallery .nav-item h3,	
+	.primary-nav .secondary-nav a,
+	.primary-nav .dropdown-nav a,
+	.primary-nav > li > a:hover, .primary-nav > li > a:not([href]):not([tabindex]).selected, .primary-nav > li > a:not([href]):not([tabindex]):hover, .primary-nav > li > a:not([href]):not([tabindex]):focus {
+	    color: #4a4f54;
+	}
+	.primary-nav .secondary-nav > li > a {
+		color: #005a2b;
+	}
+}
