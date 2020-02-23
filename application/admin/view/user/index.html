@@ -14,13 +14,26 @@
         <div class="layui-form layui-card-header layuiadmin-card-header-auto">
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <label class="layui-form-label">用户名称</label>
+                    <label class="layui-form-label">搜索用户名</label>
                     <div class="layui-input-block">
-                        <input type="text" name="admin_name" placeholder="请输入" autocomplete="off" class="layui-input">
+                        <input type="text" name="username" placeholder="请输入" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
-                    <button class="layui-btn layuiadmin-btn-admin" lay-submit lay-filter="LAY-user-back-search">
+                    <button class="layui-btn layuiadmin-btn-admin" lay-submit lay-filter="LAY-user-back-search1">
+                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">搜索学号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="schoolid" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn layuiadmin-btn-admin" lay-submit lay-filter="LAY-user-back-search2">
                         <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
                     </button>
                 </div>
@@ -30,7 +43,7 @@
         <div class="layui-card-body">
             {if (buttonAuth('manager/addadmin'))}
             <div style="padding-bottom: 10px;">
-                <button class="layui-btn layuiadmin-btn-admin" data-type="add"><i class="layui-icon">&#xe654;</i> 添加</button>
+                <button class="layui-btn layuiadmin-btn-admin" data-type="add"><i class="layui-icon">&#xe654;</i> 添加用户</button>
             </div>
             {/if}
             <table id="LAY-user-table" lay-filter="LAY-user-table"></table>
@@ -39,6 +52,22 @@
                 <button class="layui-btn layui-btn-success layui-btn-xs">启用</button>
                 {{#  } else { }}
                 <button class="layui-btn layui-btn-danger layui-btn-xs">禁用</button>
+                {{#  } }}
+            </script>
+            <script type="text/html" id="is_adminTpl">
+                {{#  if(d.is_admin == 1){ }}
+                <button class="layui-btn layui-btn-warm layui-btn-xs">管理员</button>
+                {{#  } else { }}
+                <button class="layui-btn layui-btn-success layui-btn-xs">普通用户</button>
+                {{#  } }}
+            </script>
+            <script type="text/html" id="sexTpl">
+                {{#  if(d.sex == 0){ }}
+                <b>女</b>
+                {{#  } if(d.sex == 1){ }}
+                <b>男</b>
+                {{#  } if(d.sex == 2) { }}
+                <b>未知</b>
                 {{#  } }}
             </script>
             <script type="text/html" id="table-seller-admin">
@@ -71,7 +100,7 @@
         var active = {
 
             add: function() {
-                layTool.open( "{:url('manager/addAdmin')}", "添加管理员", '50%', '50%');
+                layTool.open( "{:url('user/addUser')}", "添加用户", '50%', '50%');
             }
         };
 
@@ -80,8 +109,18 @@
             active[type] ? active[type].call(this) : '';
         });
 
-        // 监听搜索
-        form.on('submit(LAY-user-back-search)', function(data){
+        // 监听用户名搜索
+        form.on('submit(LAY-user-back-search1)', function(data){
+            var field = data.field;
+
+            // 执行重载
+            table.reload('LAY-user-table', {
+                where: field
+            });
+        });
+
+        // 监听学号搜索
+        form.on('submit(LAY-user-back-search2)', function (data) {
             var field = data.field;
 
             // 执行重载
@@ -93,32 +132,57 @@
 
     renderTable();
     // 渲染表格
+
     function renderTable() {
-        layTool.table("#LAY-user-table", "/admin/manager/index", [
-            [{
-                field: "admin_id",
-                title: "管理员ID"
-            }, {
-                field: "admin_name",
-                title: "管理员名称",
-            }, {
-                field: "role_name",
-                title: "角色",
-            }, {
-                field: "status",
-                title: "状态",
-                templet: '#statusTpl'
-            }, {
-                field: "last_login_time",
-                title: "上次登录时间",
-            }, {
-                title: "操作",
-                align: "center",
-                width: 150,
-                fixed: "right",
-                toolbar: "#table-seller-admin"
-            }]
-        ]);
+        layui.use(['table','util'], function () {
+            var table = layui.table;
+            var util = layui.util;
+
+            layTool.table("#LAY-user-table", "/admin/user/index", [
+                [{
+                    field: "schoolid",
+                    title: "学号"
+                }, {
+                    field: "username",
+                    title: "用户名"
+                }, {
+                    field: "realname",
+                    title: "真实姓名"
+                }, {
+                    field: "email",
+                    title: "邮箱地址"
+                }, {
+                    field: "phone",
+                    title: "联系方式"
+                }, {
+                    field: "age",
+                    title: "年龄"
+                }, {
+                    field: "sex",
+                    title: "性别",
+                    templet: "#sexTpl"
+                }, {
+                    field: "status",
+                    title: "状态",
+                    templet: '#statusTpl'
+                }, {
+                    field: "is_admin",
+                    title: "用户组",
+                    templet: '#is_adminTpl'
+                },
+                    {
+                    field: "last_login",
+                    title: "上次登录时间",
+                    templet: function (d) { if (!d.last_login){return '无记录'}; return util.toDateString(d.last_login * 1000, "yyyy-MM-dd HH:mm:ss")}
+                }, {
+                    title: "操作",
+                    align: "center",
+                    width: 150,
+                    fixed: "right",
+                    toolbar: "#table-seller-admin"
+                }]
+            ]);
+        });
 
         layui.use(['table', 'layer'], function () {
             let layer = layui.layer;
