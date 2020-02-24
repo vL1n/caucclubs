@@ -8,7 +8,7 @@ class User extends Model
 {
     public function adminClub(){
 
-        return $this->belongsTo('Information','admin_club');
+        return $this->hasOne('Information','id');
     }
 
     /**
