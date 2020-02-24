@@ -2,8 +2,11 @@
 
 namespace app\admin\controller;
 
+use app\admin\model\Admin;
+use app\admin\validate\AdminValidate;
 use app\admin\validate\UserValidate;
 use think\Controller;
+use think\Db;
 use think\Request;
 use tool\Log;
 
@@ -50,6 +53,9 @@ class User extends Base
         return $this->fetch();
     }
 
+    /**
+     * @return array|mixed|\think\response\Json
+     */
     public function addUser(){
 
         if (request()->isPost()){
@@ -74,13 +80,17 @@ class User extends Base
                 'status'        =>$param['status'],
                 'phone'         =>$param['phone'],
                 'sex'           =>$param['sex'],
+                'age'           =>$param['age'],
                 'email'         =>$param['email'],
                 'schoolid'      =>$param['schoolid'],
                 'is_admin'      =>0,
                 'operate_club'  =>0
             ];
 
+            //写入数据库
             $res = $User->addUser($insertInfo);
+
+            //写入log
             Log::write("添加用户：" . $param['username']);
 
             return json($res);
@@ -91,10 +101,76 @@ class User extends Base
     }
 
     public function editUser(){
+        if(request()->isPost()){
 
+            // 初始化参数
+            $param = input('post.');
+
+            // 初始化验证器
+            $validate = new UserValidate();
+
+            // 验证传入参数
+            if(!$validate->check($param)) {
+                return ['code' => -1, 'data' => '', 'msg' =>$validate->getError()];
+            }
+
+            // 判断是否已经修改过密码
+            $userid = $param['id'];
+            $user = new \app\index\model\User();
+            $res = $user->checkPassword($userid,$param['password']);
+
+            $password = '';
+            // 0为已更改密码，2为未更改，1为出错
+            if($res['code'] == 0){
+                $password = makePassword($param['password']);
+            }elseif ($res['code'] == 2){
+                $password = $param['password'];
+            }
+
+            // 准备存入数据
+            $updateInfo = [
+                'id'            =>$param['id'],
+                'username'      =>$param['username'],
+                'password'      =>$password,
+                'realname'      =>$param['realname'],
+                'status'        =>$param['status'],
+                'phone'         =>$param['phone'],
+                'sex'           =>$param['sex'],
+                'age'           =>$param['age'],
+                'email'         =>$param['email'],
+                'schoolid'      =>$param['schoolid'],
+            ];
+
+            //写入数据库
+            $res = $user->editUser($updateInfo);
+
+            //写入log
+            Log::write("编辑用户：" . $param['username']);
+
+            return json($res);
+        }
+
+        $userid = input('param.id');;
+        $user = new \app\index\model\User();
+        $this->assign([
+            'user' => $user->getUserById($userid)['data']
+        ]);
+
+        return $this->fetch('edit');
     }
 
-    public function deleteUser(){
+    public function delUser(){
 
+        if(request()->isAjax()) {
+
+            $userId = input('param.id');
+
+            $user = new \app\index\model\User();
+            $res = $user->delUser($userId);
+
+            Log::write("删除用户：" . $userId);
+
+            return json($res);
+        }
     }
 }

@@ -149,7 +149,7 @@ class Manager extends Base
     {
         if(request()->isAjax()) {
 
-            $adminId = input('param.id');
+            $adminId = input('param.admin_id');
 
             $admin = new admin();
             $res = $admin->delAdmin($adminId);

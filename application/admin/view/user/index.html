@@ -193,13 +193,13 @@
                     if ("del" === e.event) {
 
                         layer.ready(function () {
-                            var index = layer.confirm('您确定要删除该管理员？', {
+                            var index = layer.confirm('您确定要删除该用户？', {
                                 title: '友情提示',
                                 icon: 3,
                                 btn: ['确定', '取消']
                             }, function() {
 
-                                $.getJSON('{:url("manager/delAdmin")}', {id: e.data.admin_id}, function (res) {
+                                $.getJSON('{:url("user/delUser")}', {id: e.data.id}, function (res) {
 
                                     if(0 == res.code) {
 
@@ -217,7 +217,7 @@
                         });
                     } else if ("edit" === e.event) {
 
-                        layTool.open("/admin/manager/editAdmin/admin_id/" + e.data.admin_id, "编辑管理员", '50%', '50%');
+                        layTool.open("/admin/user/editUser/id/" + e.data.id, "编辑用户", '50%', '50%');
                     }
                 });
         });
