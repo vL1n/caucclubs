@@ -53,6 +53,12 @@ class User extends Model
         return modelReMsg(0, '', '添加用户成功');
     }
 
+    /**
+     * @param $id
+     * @param $password
+     * @return code 2:未改变，1：出错，0：已改变
+     * @return array
+     */
     public function checkPassword($id,$password){
 
         try {
@@ -67,6 +73,10 @@ class User extends Model
         return modelReMsg(0,'','');
     }
 
+    /**
+     * @param $user
+     * @return array
+     */
     public function editUser($user){
 
         try {
@@ -79,6 +89,10 @@ class User extends Model
         return modelReMsg(0,'','');
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
     public function getUserById($id){
 
         try {
@@ -91,6 +105,10 @@ class User extends Model
         return modelReMsg(0, $info, 'ok');
     }
 
+    /**
+     * @param $userId
+     * @return array
+     */
     public function delUser($userId){
 
         try {
