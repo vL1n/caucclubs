@@ -13,6 +13,36 @@ use tool\Auth;
 
 class Base extends Controller
 {
+    // 定义全局变量
+    public $website = '';
+    public $main_title = '';
+    public $sub_title = '';
+    public $admin_main_title = '';
+    public $admin_sub_title = '';
+    public $icon_path = '';
+    public $logo_path = '';
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->website = Front::getSetting('website');
+        $this->main_title = Front::getSetting('main_title');
+        $this->sub_title = Front::getSetting('sub_title');
+        $this->admin_main_title = Front::getSetting('admin_main_title');
+        $this->admin_sub_title = Front::getSetting('admin_sub_title');
+        $this->icon_path = Front::getSetting('icon_path');
+        $this->logo_path = Front::getSetting('logo_path');
+        $this->assign([
+            'website'=>$this->website,
+            'main_title'=>$this->main_title,
+            'sub_title'=>$this->sub_title,
+            'admin_main_title'=>$this->admin_main_title,
+            'admin_sub_title'=>$this->admin_sub_title,
+            'icon_path'=>$this->icon_path,
+            'logo_path'=>$this->logo_path
+        ]);
+    }
+
     public function initialize()
     {
         if(empty(session('admin_user_name'))){

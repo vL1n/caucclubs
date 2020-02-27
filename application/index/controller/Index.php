@@ -1,13 +1,47 @@
 <?php
 namespace app\index\controller;
 
+use app\admin\controller\Front;
+use app\admin\model\Setting;
 use app\index\model\User;
+use think\App;
 use think\Controller;
 use think\Request;
 use think\Session;
 
 class Index extends Controller
 {
+    // 定义全局变量
+    public $website = '';
+    public $main_title = '';
+    public $sub_title = '';
+    public $admin_main_title = '';
+    public $admin_sub_title = '';
+    public $icon_path = '';
+    public $logo_path = '';
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->website = Front::getSetting('website');
+        $this->main_title = Front::getSetting('main_title');
+        $this->sub_title = Front::getSetting('sub_title');
+        $this->admin_main_title = Front::getSetting('admin_main_title');
+        $this->admin_sub_title = Front::getSetting('admin_sub_title');
+        $this->icon_path = Front::getSetting('icon_path');
+        $this->logo_path = Front::getSetting('logo_path');
+        $this->assign([
+            'website'=>$this->website,
+            'main_title'=>$this->main_title,
+            'sub_title'=>$this->sub_title,
+            'admin_main_title'=>$this->admin_main_title,
+            'admin_sub_title'=>$this->admin_sub_title,
+            'icon_path'=>$this->icon_path,
+            'logo_path'=>$this->logo_path
+        ]);
+    }
+
+
     public function index()
     {
         return $this->redirect('/Index/Home');
@@ -80,18 +114,4 @@ class Index extends Controller
             return $this->redirect('/');
         }
     }
-
-    public function testPython(){
-
-        //测试python程序接口
-        $dep = 'NNG';
-        $arr = 'PEK';
-        $date = '2020-1-12';
-        unset($out);
-        $output = shell_exec('C:\Program Files (x86)\Python\python.exe D:\Working files\Python_work\climbTrip\phpConnector.py');
-        var_dump($output);
-        echo '<br>';
-    }
-
-
 }

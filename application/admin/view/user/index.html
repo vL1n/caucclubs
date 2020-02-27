@@ -141,13 +141,16 @@
             layTool.table("#LAY-user-table", "/admin/user/index", [
                 [{
                     field: "schoolid",
-                    title: "学号"
+                    title: "学号",
+                    sort: true
                 }, {
                     field: "username",
-                    title: "用户名"
+                    title: "用户名",
+                    sort: true
                 }, {
                     field: "realname",
-                    title: "真实姓名"
+                    title: "真实姓名",
+                    sort: true
                 }, {
                     field: "email",
                     title: "邮箱地址"
@@ -156,24 +159,29 @@
                     title: "联系方式"
                 }, {
                     field: "age",
-                    title: "年龄"
+                    title: "年龄",
+                    sort: true
                 }, {
                     field: "sex",
                     title: "性别",
-                    templet: "#sexTpl"
+                    templet: "#sexTpl",
+                    sort: true
                 }, {
                     field: "status",
                     title: "状态",
-                    templet: '#statusTpl'
+                    templet: '#statusTpl',
+                    sort: true
                 }, {
                     field: "is_admin",
                     title: "用户组",
-                    templet: '#is_adminTpl'
+                    templet: '#is_adminTpl',
+                    sort: true
                 },
                     {
                     field: "last_login",
                     title: "上次登录时间",
-                    templet: function (d) { if (!d.last_login){return '无记录'}; return util.toDateString(d.last_login * 1000, "yyyy-MM-dd HH:mm:ss")}
+                    templet: function (d) { if (!d.last_login){return '无记录'}; return util.toDateString(d.last_login * 1000, "yyyy-MM-dd HH:mm:ss")},
+                        sort: true
                 }, {
                     title: "操作",
                     align: "center",
