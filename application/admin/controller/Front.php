@@ -6,7 +6,7 @@ use app\admin\model\Setting;
 use think\Controller;
 use think\Request;
 
-class Front extends Controller
+class Front extends Base
 {
     public function index()
     {
